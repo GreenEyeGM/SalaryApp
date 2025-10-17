@@ -1,0 +1,105 @@
+@model SalaryApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h2>Employee Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <h4>@Model.FirstName @Model.LastName</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FirstName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.LastName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+
+                @if (!string.IsNullOrEmpty(Model.MiddleName))
+                {
+                    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.MiddleName)</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MiddleName)</dd>
+                }
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.HireDate)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.HireDate)</dd>
+
+                @if (Model.TerminationDate.HasValue)
+                {
+                    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TerminationDate)</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.TerminationDate)</dd>
+                }
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.IsTerminated)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.IsTerminated)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Company)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Company.Name)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Position)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Position.Title)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Office)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Office.Name)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Address)</dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Address.StreetName) @Html.DisplayFor(model => model.Address.StreetNumber),
+                    @Html.DisplayFor(model => model.Address.Neighborhood),
+                    @Html.DisplayFor(model => model.Address.City.Name)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h4>Salary History</h4>
+        <a asp-controller="Salary" asp-action="Create" asp-route-employeeId="@Model.Id" class="btn btn-success mb-3">Add Salary Record</a>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Base Salary</th>
+                        <th>Bonus</th>
+                        <th>Deduction</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var salary in Model.Salaries.OrderByDescending(s => s.PeriodStart))
+                    {
+                        <tr>
+                            <td>@salary.PeriodStart.ToShortDateString() - @salary.PeriodEnd.ToShortDateString()</td>
+                            <td>@Model.Position.BaseSalary.ToString("C")</td>
+                            <td>@salary.Bonus.ToString("C")</td>
+                            <td>@salary.Deduction.ToString("C")</td>
+                            <td>@((Model.Position.BaseSalary + salary.Bonus - salary.Deduction).ToString("C"))</td>
+                            <td>
+                                <a asp-controller="Salary" asp-action="Edit" asp-route-id="@salary.Id" class="btn btn-primary btn-sm">Edit</a>
+                                <a asp-controller="Salary" asp-action="Delete" asp-route-id="@salary.Id" class="btn btn-danger btn-sm">Delete</a>
+                                <a asp-controller="Salary" asp-action="ViewPdf" asp-route-id="@salary.Id" class="btn btn-info btn-sm" target="_blank">View PDF</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        @if (!Model.IsTerminated)
+        {
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Terminate</a>
+        }
+        else
+        {
+            <a asp-action="Rehire" asp-route-id="@Model.Id" class="btn btn-success">Rehire</a>
+        }
+    </div>
+</div> 

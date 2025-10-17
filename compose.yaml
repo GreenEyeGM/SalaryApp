@@ -1,0 +1,11 @@
+﻿services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: SalaryAppMain
+    ports:
+      - "1533:1433"
+    environment:
+      SA_PASSWORD: "SilnaParola123!"
+      ACCEPT_EULA: "Y"
+    restart: always

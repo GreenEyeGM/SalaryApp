@@ -1,0 +1,95 @@
+@model SalaryApp.Models.ViewModels.SalaryEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Salary";
+}
+
+<div class="container-fluid">
+    <h1>Edit Salary for @Model.EmployeeFirstName @Model.EmployeeLastName</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Employee Information</h5>
+                    <dl class="row">
+                        <dt class="col-sm-3">Position</dt>
+                        <dd class="col-sm-9">@Model.PositionTitle</dd>
+
+                        <dt class="col-sm-3">Base Salary</dt>
+                        <dd class="col-sm-9">@Model.BaseSalary.ToString("C")</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="EmployeeId" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PeriodStart" class="control-label">Period Start</label>
+                            <input asp-for="PeriodStart" class="form-control" type="date" required />
+                            <span asp-validation-for="PeriodStart" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PeriodEnd" class="control-label">Period End</label>
+                            <input asp-for="PeriodEnd" class="form-control" type="date" required />
+                            <span asp-validation-for="PeriodEnd" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Bonus" class="control-label">Bonus</label>
+                            <input name="bonus" class="form-control" type="text" value="@Model.Bonus.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" />
+                            <span asp-validation-for="Bonus" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Deduction" class="control-label">Deduction</label>
+                            <input name="deduction" class="form-control" type="text" value="@Model.Deduction.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" />
+                            <span asp-validation-for="Deduction" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                    <a asp-controller="Employee" asp-action="Details" asp-route-id="@Model.EmployeeId" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Employee
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function() {
+            // Validate period dates
+            $('form').on('submit', function(e) {
+                var startDate = new Date($('#PeriodStart').val());
+                var endDate = new Date($('#PeriodEnd').val());
+                
+                if (startDate > endDate) {
+                    e.preventDefault();
+                    alert('Period start date cannot be after period end date.');
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+} 

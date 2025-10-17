@@ -1,0 +1,88 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SalaryApp
+build_property.RootNamespace = SalaryApp
+build_property.ProjectDir = /Users/itpc/Files/Coding/Rider C#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/itpc/Files/Coding/Rider C#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Companies/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29tcGFuaWVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Employee/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Employee/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Employee/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Employee/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Salary/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2FsYXJ5L0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Salary/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2FsYXJ5L0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Salary/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2FsYXJ5L0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Salary/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2FsYXJ5L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/itpc/Files/Coding/Rider C\#/NBU/CSCB766 ASP .NET/SalaryApp/SalaryApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-f1rxdt2z3o

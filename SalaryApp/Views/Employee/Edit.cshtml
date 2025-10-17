@@ -1,0 +1,159 @@
+@using SalaryApp.Models.Enumerations
+@model SalaryApp.Models.ViewModels.EmployeeEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="container-fluid">
+    <h1>Edit Employee</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="MiddleName" class="control-label"></label>
+                            <input asp-for="MiddleName" class="form-control" />
+                            <span asp-validation-for="MiddleName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="CompanyId" class="control-label">Company</label>
+                            <select asp-for="CompanyId" class="form-select" asp-items="@(new SelectList(ViewBag.Companies, "Id", "Name"))">
+                                <option value="">-- Select Company --</option>
+                            </select>
+                            <span asp-validation-for="CompanyId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="PositionId" class="control-label">Position</label>
+                            <select asp-for="PositionId" class="form-select" asp-items="@(new SelectList(ViewBag.Positions, "Id", "Title"))">
+                                <option value="">-- Select Position --</option>
+                            </select>
+                            <span asp-validation-for="PositionId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="OfficeId" class="control-label">Office</label>
+                            <select asp-for="OfficeId" class="form-select" asp-items="@(new SelectList(ViewBag.Offices, "Id", "Name"))">
+                                <option value="">-- Select Office --</option>
+                            </select>
+                            <span asp-validation-for="OfficeId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="HireDate" class="control-label"></label>
+                            <input asp-for="HireDate" class="form-control" type="date" />
+                            <span asp-validation-for="HireDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="TerminationDate" class="control-label"></label>
+                            <input asp-for="TerminationDate" class="form-control" type="date" />
+                            <span asp-validation-for="TerminationDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="mt-4">Address Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="StreetName" class="control-label"></label>
+                            <input asp-for="StreetName" class="form-control" />
+                            <span asp-validation-for="StreetName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="StreetNumber" class="control-label"></label>
+                            <input asp-for="StreetNumber" class="form-control" />
+                            <span asp-validation-for="StreetNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Neighborhood" class="control-label"></label>
+                            <input asp-for="Neighborhood" class="form-control" />
+                            <span asp-validation-for="Neighborhood" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PostalCode" class="control-label"></label>
+                            <input asp-for="PostalCode" class="form-control" />
+                            <span asp-validation-for="PostalCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CityId" class="control-label">City</label>
+                            <select asp-for="CityId" class="form-select" asp-items="@(new SelectList(ViewBag.Cities, "Id", "Name"))">
+                                <option value="">-- Select City --</option>
+                            </select>
+                            <span asp-validation-for="CityId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="AddressType" class="control-label"></label>
+                            <select asp-for="AddressType" class="form-select" asp-items="Html.GetEnumSelectList<AddressType>()">
+                                <option value="">-- Select Address Type --</option>
+                            </select>
+                            <span asp-validation-for="AddressType" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 
