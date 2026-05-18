@@ -4,40 +4,52 @@
     ViewData["Title"] = "Salary Records";
 }
 
-<div class="container mt-4">
-    <h2>Salary Records</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
+<div class="page-header">
+    <div></div>
+    <a asp-controller="Employee" asp-action="Index" class="btn btn-secondary btn-sm">
+        <i class="fas fa-users me-1"></i> View Employees
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Position</th>
+                <th>Period</th>
+                <th>Base Salary</th>
+                <th>Bonus</th>
+                <th>Deduction</th>
+                <th>Total</th>
+                <th style="width:1%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>Employee</th>
-                    <th>Position</th>
-                    <th>Period</th>
-                    <th>Base Salary</th>
-                    <th>Bonus</th>
-                    <th>Deduction</th>
-                    <th>Total</th>
-                    <th>Actions</th>
+                    <td class="fw-medium">@item.Employee.FirstName @item.Employee.LastName</td>
+                    <td>@item.Employee.Position.Title</td>
+                    <td class="small text-muted">@item.PeriodStart.ToShortDateString() – @item.PeriodEnd.ToShortDateString()</td>
+                    <td>@item.Employee.Position.BaseSalary.ToString("C")</td>
+                    <td class="text-success">+@item.Bonus.ToString("C")</td>
+                    <td class="text-danger">-@item.Deduction.ToString("C")</td>
+                    <td class="fw-semibold">@((item.Employee.Position.BaseSalary + item.Bonus - item.Deduction).ToString("C"))</td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Employee.FirstName @item.Employee.LastName</td>
-                        <td>@item.Employee.Position.Title</td>
-                        <td>@item.PeriodStart.ToShortDateString() - @item.PeriodEnd.ToShortDateString()</td>
-                        <td>@item.Employee.Position.BaseSalary.ToString("C")</td>
-                        <td>@item.Bonus.ToString("C")</td>
-                        <td>@item.Deduction.ToString("C")</td>
-                        <td>@((item.Employee.Position.BaseSalary + item.Bonus - item.Deduction).ToString("C"))</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div> 
+            }
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="8" class="text-center text-muted py-4">No salary records found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,56 +1,51 @@
 @model SalaryApp.Models.Employee
 
 @{
-    ViewData["Title"] = "Delete Employee";
+    ViewData["Title"] = "Terminate Employee";
 }
 
-<div class="container-fluid">
-    <h1>Delete Employee</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="alert alert-warning mb-4">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Warning:</strong> This action will terminate the employee and cannot be undone.
+        </div>
 
-    <div class="alert alert-warning">
-        <h4 class="alert-heading">Warning!</h4>
-        <p>Are you sure you want to terminate this employee? This action cannot be undone.</p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Employee Information</h5>
-                    <dl class="row">
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FirstName)</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
-
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.MiddleName)</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.MiddleName)</dd>
-
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.LastName)</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
-
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Company)</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Company.Name)</dd>
-
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Position)</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Position.Title)</dd>
-
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Office)</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Office.Name)</dd>
-
-                        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.HireDate)</dt>
-                        <dd class="col-sm-9">@Model.HireDate.ToString("dd/MM/yyyy")</dd>
-                    </dl>
+        <div class="card mb-4">
+            <div class="card-header">Employee Information</div>
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="emp-avatar">
+                        @(Model.FirstName?.Length > 0 ? Model.FirstName[0].ToString() : "")@(Model.LastName?.Length > 0 ? Model.LastName[0].ToString() : "")
+                    </div>
+                    <div>
+                        <div class="fw-semibold">@Model.FirstName @Model.MiddleName @Model.LastName</div>
+                        <div class="text-muted small">@Model.Position?.Title</div>
+                    </div>
                 </div>
-            </div>
+                <dl class="row detail-list mb-0">
+                    <dt class="col-5">Company</dt>
+                    <dd class="col-7">@Model.Company?.Name</dd>
 
-            <form asp-action="Delete" class="mt-4">
-                <input type="hidden" asp-for="Id" />
+                    <dt class="col-5">Office</dt>
+                    <dd class="col-7">@Model.Office?.Name</dd>
+
+                    <dt class="col-5">Hire Date</dt>
+                    <dd class="col-7">@Model.HireDate.ToString("dd MMM yyyy")</dd>
+                </dl>
+            </div>
+        </div>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-danger">
-                    <i class="fas fa-trash"></i> Terminate Employee
+                    <i class="fas fa-user-slash me-1"></i> Confirm Termination
                 </button>
                 <a asp-action="Index" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Back to List
+                    <i class="fas fa-arrow-left me-1"></i> Cancel
                 </a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-</div> 
+</div>

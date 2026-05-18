@@ -1,41 +1,52 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to SalaryApp</h1>
-    <p class="lead">A modern solution for managing employee salaries and company data.</p>
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <a href="/Companies" class="stat-card">
+            <div class="stat-icon indigo">
+                <i class="fas fa-building"></i>
+            </div>
+            <div>
+                <div class="stat-label">Section</div>
+                <div class="stat-title">Companies</div>
+                <div class="stat-subtitle">Manage company information</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/Employee" class="stat-card">
+            <div class="stat-icon emerald">
+                <i class="fas fa-users"></i>
+            </div>
+            <div>
+                <div class="stat-label">Section</div>
+                <div class="stat-title">Employees</div>
+                <div class="stat-subtitle">View and manage employee records</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/Salary" class="stat-card">
+            <div class="stat-icon amber">
+                <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div>
+                <div class="stat-label">Section</div>
+                <div class="stat-title">Salaries</div>
+                <div class="stat-subtitle">Access and modify salary records</div>
+            </div>
+        </a>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <a href="/Companies" class="text-decoration-none text-dark">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Companies</h5>
-                    <p class="card-text">Manage your company information.</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4">
-        <a href="/Employee" class="text-decoration-none text-dark">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Employees</h5>
-                    <p class="card-text">View and manage employee records.</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4">
-        <a href="/Salary" class="text-decoration-none text-dark">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Salaries</h5>
-                    <p class="card-text">Access and modify salary details.</p>
-                </div>
-            </div>
-        </a>
+<div class="card">
+    <div class="card-body text-center py-5">
+        <div style="color: var(--accent); opacity: 0.25; font-size: 48px; margin-bottom: 16px;">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <h5 class="fw-semibold mb-1">Welcome to SalaryApp</h5>
+        <p class="text-muted small mb-0">A modern solution for managing employee salaries and company data.</p>
     </div>
 </div>

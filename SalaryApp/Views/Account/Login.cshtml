@@ -2,39 +2,41 @@
 
 @{
     ViewData["Title"] = "Login";
+    ViewData["BodyClass"] = "auth-page";
     Layout = "_Layout";
 }
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg mt-5">
-                <div class="card-header text-white bg-primary text-center">
-                    <h3>Login</h3>
-                </div>
-                <div class="card-body p-4">
-                    <form asp-action="Login" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group mb-3">
-                            <label asp-for="Username" class="form-label"></label>
-                            <input asp-for="Username" class="form-control" />
-                            <span asp-validation-for="Username" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mb-4">
-                            <label asp-for="Password" class="form-label"></label>
-                            <input asp-for="Password" class="form-control" type="password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="auth-card">
+    <div class="auth-card-header">
+        <div class="auth-logo">
+            <i class="fas fa-dollar-sign"></i>
         </div>
+        <h2>SalaryApp</h2>
+        <p>Sign in to your account</p>
+    </div>
+    <div class="auth-card-body">
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3" style="display:none"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Username" class="form-label"></label>
+                <input asp-for="Username" class="form-control" placeholder="Enter your username" autocomplete="username" />
+                <span asp-validation-for="Username" class="text-danger small"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="Enter your password" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-} 
+}

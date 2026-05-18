@@ -1,53 +1,81 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - SalaryApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/SalaryApp.styles.css" asp-append-version="true"/>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SalaryApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Companies" asp-action="Index">Companies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Salary" asp-action="Index">Salaries</a>
-                        </li>
-                    </ul>
+<body class="@(ViewData["BodyClass"])">
+    @{
+        bool isAuthPage = ViewData["BodyClass"]?.ToString() == "auth-page";
+    }
+    @if (!isAuthPage)
+    {
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
+                <span class="sidebar-brand">SalaryApp</span>
+            </div>
+            <ul class="sidebar-nav">
+                @{
+                    string controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+                }
+                <li class="sidebar-nav-item @(controller == "Home" ? "active" : "")">
+                    <a href="/" class="sidebar-nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item @(controller == "Companies" ? "active" : "")">
+                    <a href="/Companies" class="sidebar-nav-link">
+                        <i class="fas fa-building"></i>
+                        <span>Companies</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item @(controller == "Employee" ? "active" : "")">
+                    <a href="/Employee" class="sidebar-nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Employees</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item @(controller == "Salary" ? "active" : "")">
+                    <a href="/Salary" class="sidebar-nav-link">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Salaries</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <span>&copy; @DateTime.Now.Year SalaryApp</span>
             </div>
         </nav>
-    </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - SalaryApp
+        <div class="main-wrapper">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1 class="page-title">@(ViewData["Title"] ?? "Dashboard")</h1>
+                </div>
+                <div class="top-bar-right">
+                    <span class="text-muted small">@DateTime.Now.ToString("dddd, MMMM d, yyyy")</span>
+                </div>
+            </header>
+            <main class="main-content">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
+    }
+    else
+    {
+        @RenderBody()
+    }
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
